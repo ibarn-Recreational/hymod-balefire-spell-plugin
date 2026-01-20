@@ -1,0 +1,44 @@
+{
+  "Type": "Simple",
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.167,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "BalefireBlast",
+			"Parent": "Balefire_Base",
+			"RunTime": 0.25,
+			"Effects": {
+				"ItemAnimationId": "CastHurlCharged"
+			}            
+          }
+        ]
+      },
+	  {
+		"Interactions": [
+			{
+			  "Type": "ChangeStat",
+			  "StatModifiers": {
+				"Stamina": -5
+			  }
+			}
+		]
+	  },
+	  {
+		"Interactions": [
+			{
+			  "Type": "ChangeStat",
+			  "Behaviour": "Set",
+			  "StatModifiers": {
+				"StaminaRegenDelay": -1.5
+			  }
+			}
+		]
+	  }
+    ]
+  }
+}

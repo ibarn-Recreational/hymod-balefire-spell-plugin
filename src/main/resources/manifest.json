@@ -1,0 +1,22 @@
+{
+    "Group": "ibarnstormer",
+    "Name": "BalefirePlugin",
+    "Version": "0.0.1",
+    "Description": "Adds in a balefire-like spell",
+    "Authors": [
+        {
+            "Name": "ibarnstormer"
+        }
+    ],
+    "Website": "",
+    "ServerVersion": "*",
+    "Dependencies": {
+        
+    },
+    "OptionalDependencies": {
+        
+    },
+    "DisabledByDefault": false,
+    "Main": "com.ibarnstormer.balefireplugin.BalefirePlugin",
+    "IncludesAssetPack": true
+}
