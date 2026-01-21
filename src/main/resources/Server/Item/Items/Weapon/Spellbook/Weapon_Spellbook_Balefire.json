@@ -33,7 +33,11 @@
       }
     ]
   },
-  "Model": "Items/Weapons/Spellbook/Book.blockymodel",
+  "Light": {
+    "Color": "#987",
+    "Radius": 0
+  },
+  "Model": "Items/Weapons/Spellbook/Balefire_Spellbook.blockymodel",
   "Texture": "Items/Weapons/Spellbook/Book_Balefire_Texture.png",
   "PlayerAnimationsId": "Spellbook",
   "Interactions": {
