@@ -1,7 +1,7 @@
 {
     "Group": "ibarnstormer",
     "Name": "BalefirePlugin",
-    "Version": "0.0.2",
+    "Version": "0.0.3",
     "Description": "Adds in a balefire-like spell",
     "Authors": [
         {

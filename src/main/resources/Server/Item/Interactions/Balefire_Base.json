@@ -11,7 +11,7 @@
     "BlockDamageRadius": 2,
     "BlockDropChance": 0,
     "EntityDamage": 75,
-    "EntityDamageRadius": 4,
+    "EntityDamageRadius": 5,
     "Knockback": {
       "Type": "Point",
       "VelocityConfig": {

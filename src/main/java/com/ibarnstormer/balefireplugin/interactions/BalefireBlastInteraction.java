@@ -101,10 +101,6 @@ public class BalefireBlastInteraction extends SimpleInstantInteraction {
         Vector3d lookDir = lookVec.getDirection().normalize();
         Vector3d castOrigin = lookPos.addScaled(lookDir, 2);
 
-        if(explosionSoundIdx != 0) {
-            SoundUtil.playSoundEvent3d(explosionSoundIdx, SoundCategory.SFX, lookPos, commandBuffer);
-        }
-
         for(int i = 0; i < numExplosions; i++) {
             Vector3d pos = castOrigin.addScaled(lookDir, explosionSeparation);
             createExplosion(commandBuffer, attackerRef, world, pos);
@@ -116,13 +112,17 @@ public class BalefireBlastInteraction extends SimpleInstantInteraction {
 
     private void createExplosion(CommandBuffer<EntityStore> commandBuffer, Ref<EntityStore> attackerRef, World world, Vector3d pos) {
         if(explosionConfig != null) {
-            ExplosionUtils.performExplosion(new Damage.EnvironmentSource("explosion"), pos, explosionConfig, attackerRef, commandBuffer, world.getChunkStore().getStore());
+            ExplosionUtils.performExplosion(new Damage.EntitySource(attackerRef), pos, explosionConfig, attackerRef, commandBuffer, world.getChunkStore().getStore());
 
             if(explosionParticles != null) {
                 SpatialResource<Ref<EntityStore>, EntityStore> playerSpatialResource = commandBuffer.getResource(EntityModule.get().getPlayerSpatialResourceType());
                 ObjectList<Ref<EntityStore>> results = SpatialResource.getThreadLocalReferenceList();
                 playerSpatialResource.getSpatialStructure().collect(pos, 75.0, results);
                 ParticleUtil.spawnParticleEffect(explosionParticles, pos, results, commandBuffer);
+            }
+
+            if(explosionSoundIdx != 0) {
+                SoundUtil.playSoundEvent3d(explosionSoundIdx, SoundCategory.SFX, pos, commandBuffer);
             }
         }
         else {
