@@ -126,7 +126,7 @@ public class BalefireBlastInteraction extends SimpleInstantInteraction {
             }
         }
         else {
-            BalefirePlugin.getPluginLogger().atWarning().log(String.format("Could not create balefire explosion at %f, %f, %f due to missing explosion config", pos.x, pos.y, pos.z));
+            BalefirePlugin.getInstance().getLogger().atWarning().log(String.format("Could not create balefire explosion at %f, %f, %f due to missing explosion config", pos.x, pos.y, pos.z));
         }
     }
 }

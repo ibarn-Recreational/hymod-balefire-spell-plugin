@@ -29,8 +29,4 @@ public class BalefirePlugin extends JavaPlugin {
         Interaction.CODEC.register("BalefireBlast", BalefireBlastInteraction.class, BalefireBlastInteraction.CODEC);
     }
 
-    @Nonnull
-    public static HytaleLogger getPluginLogger() {
-        return LOGGER;
-    }
 }
