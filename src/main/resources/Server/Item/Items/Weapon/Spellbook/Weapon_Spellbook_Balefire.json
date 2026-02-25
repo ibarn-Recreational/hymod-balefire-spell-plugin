@@ -67,7 +67,15 @@
       "Spellbook"
     ]
   },
-  "Weapon": {},
+  "Weapon": {
+    "StatModifiers": {
+    "Mana": [
+      {
+        "Amount": 10,
+        "CalculationType": "Additive"
+      }
+    ]
+  }},
   "ItemSoundSetId": "ISS_Weapons_Books",
   "MaxStack": 1
 }

@@ -23,18 +23,7 @@
 			{
 			  "Type": "ChangeStat",
 			  "StatModifiers": {
-				"Stamina": -5
-			  }
-			}
-		]
-	  },
-	  {
-		"Interactions": [
-			{
-			  "Type": "ChangeStat",
-			  "Behaviour": "Set",
-			  "StatModifiers": {
-				"StaminaRegenDelay": -1.5
+				"Mana": -5
 			  }
 			}
 		]

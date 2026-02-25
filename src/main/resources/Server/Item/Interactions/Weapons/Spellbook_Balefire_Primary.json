@@ -19,7 +19,7 @@
 	"1": {
 		"Type": "StatsCondition",
 		"Costs": {
-			"Stamina": 5
+			"Mana": 5
 		},
 		"Next": "Spellbook_Cast_Balefire_Charged",
 		"Failed": "Spellbook_Balefire_Fail"
