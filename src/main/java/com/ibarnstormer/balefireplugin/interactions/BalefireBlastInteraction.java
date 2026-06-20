@@ -7,7 +7,6 @@ import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.spatial.SpatialResource;
 import com.hypixel.hytale.math.vector.Transform;
-import com.hypixel.hytale.math.vector.Vector3d;
 import com.hypixel.hytale.protocol.InteractionType;
 import com.hypixel.hytale.protocol.SoundCategory;
 import com.hypixel.hytale.server.core.asset.type.particle.config.WorldParticle;
@@ -23,10 +22,11 @@ import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.core.util.TargetUtil;
 import com.ibarnstormer.balefireplugin.BalefirePlugin;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import org.joml.Vector3d;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class BalefireBlastInteraction extends SimpleInstantInteraction {
 
@@ -99,10 +99,12 @@ public class BalefireBlastInteraction extends SimpleInstantInteraction {
 
         Vector3d lookPos = lookVec.getPosition();
         Vector3d lookDir = lookVec.getDirection().normalize();
-        Vector3d castOrigin = lookPos.addScaled(lookDir, 2);
+        Vector3d castOrigin = lookPos.add(lookDir.mul(2));
+
+        lookDir = lookDir.normalize().mul(explosionSeparation);
 
         for(int i = 0; i < numExplosions; i++) {
-            Vector3d pos = castOrigin.addScaled(lookDir, explosionSeparation);
+            Vector3d pos = castOrigin.add(lookDir);
             createExplosion(commandBuffer, attackerRef, world, pos);
         }
     }
@@ -116,7 +118,7 @@ public class BalefireBlastInteraction extends SimpleInstantInteraction {
 
             if(explosionParticles != null) {
                 SpatialResource<Ref<EntityStore>, EntityStore> playerSpatialResource = commandBuffer.getResource(EntityModule.get().getPlayerSpatialResourceType());
-                ObjectList<Ref<EntityStore>> results = SpatialResource.getThreadLocalReferenceList();
+                List<Ref<EntityStore>> results = SpatialResource.getThreadLocalReferenceList();
                 playerSpatialResource.getSpatialStructure().collect(pos, 75.0, results);
                 ParticleUtil.spawnParticleEffect(explosionParticles, pos, results, commandBuffer);
             }
